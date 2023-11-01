@@ -1,7 +1,8 @@
-.write {
-  padding-top: 50px;
+.write-container {
+  background-color: #ccc; /* Aquí puedes establecer el color de fondo gris que desees */
+  padding: 20px;
+  border-radius: 10px;
 }
-
 .writeImg {
   margin-left: 150px;
   width: 70vw;
@@ -23,8 +24,6 @@
 .writeIcon {
   width: 25px;
   height: 25px;
-  border-radius: 50%;
-  border: 1px solid;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,9 +53,9 @@
   top: 20px;
   right: 50px;
   color: white;
-  background-color: teal;
+  background-color: rgba(42, 181, 4, 0.953);
   padding: 10px;
-  border: none;
+  border: 1px;
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;

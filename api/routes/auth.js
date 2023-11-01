@@ -21,22 +21,25 @@ router.post("/register",async(req,res) =>{
 
 
 //Login
-
-router.post ("/login",async (req,res)=>{
+router.post("/login", async (req, res) => {
     try {
-        const user= await User.findOne({username:req.body.username})
-        !user && res.status(400).json("Wrong credentials")
-
-        const validated=await bcrypt.compare(req.body.password, user.password)
-        !validated && res.status(400).json("Worng");
-
-        const {password, ...others}=user._doc;
-        res.status(200).json(others);
-
+      const user = await User.findOne({ username: req.body.username });
+      if (!user) {
+        return res.status(400).json("Wrong credentials"); // Devuelve una respuesta y usa 'return' para evitar respuestas duplicadas.
+      }
+  
+      const validated = await bcrypt.compare(req.body.password, user.password);
+      if (!validated) {
+        return res.status(400).json("Wrong credentials"); // Devuelve una respuesta y usa 'return' para evitar respuestas duplicadas.
+      }
+  
+      const { password, ...others } = user._doc;
+      res.status(200).json(others);
     } catch (error) {
-        res.status(500).json(error)
+      res.status(500).json(error); // Envía una respuesta de error 500 en caso de error.
     }
-})
+  });
+  
 
 
 module.exports =router

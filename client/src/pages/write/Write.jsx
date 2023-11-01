@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import "./write.css";
 import axios from "axios";
 import { Context } from "../../context/Context";
+import add from "../../assets/ima.svg"
 
 export default function Write() {
   const [title, setTitle] = useState("");
@@ -24,7 +25,9 @@ export default function Write() {
       newPost.photo = filename;
       try {
         await axios.post("/upload", data);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err)
+      }
     }
     try {
       const res = await axios.post("/posts", newPost);
@@ -39,7 +42,7 @@ export default function Write() {
       <form className="writeForm" onSubmit={handleSubmit}>
         <div className="writeFormGroup">
           <label htmlFor="fileInput">
-            <i className="writeIcon fas fa-plus"></i>
+            <img className="writeIcon" src={add}/>
           </label>
           <input
             type="file"

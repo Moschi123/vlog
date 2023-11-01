@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./topbar.css";
-
+import seacrh from "../../assets/magnifying-glass-solid.svg"
+import fit from "../../assets/icon.svg"
+import pesas from "../../assets/pesas.jpg"
 export default function TopBar() {
   const { user, dispatch } = useContext(Context);
   const PF = "http://localhost:5000/images/"
@@ -12,7 +14,9 @@ export default function TopBar() {
   };
   return (
     <div className="top">
-      <div className="topLeft">
+{/*       <img  className="headerImg" src={pesas}/>
+ */}      <div className="topLeft">
+        <img className="fitIcon" src={fit} alt="not found"/>
         <i className="topIcon fab fa-facebook-square"></i>
         <i className="topIcon fab fa-twitter-square"></i>
         <i className="topIcon fab fa-pinterest-square"></i>
@@ -64,7 +68,7 @@ export default function TopBar() {
             </li>
           </ul>
         )}
-        <i className="topSearchIcon fas fa-search"></i>
+        <img className="topSearchIcon" src={seacrh} alt="no found" />
       </div>
     </div>
   );
