@@ -3,6 +3,9 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { useContext, useState } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default function Settings() {
   const [file, setFile] = useState(null);
@@ -12,7 +15,9 @@ export default function Settings() {
   const [success, setSuccess] = useState(false);
 
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:5000/images/"
+
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const PF = apiUrl + "/images/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
